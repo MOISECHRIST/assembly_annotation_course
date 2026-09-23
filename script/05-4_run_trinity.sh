@@ -14,11 +14,13 @@ module load Trinity/2.15.1-foss-2021a
 
 THREADS=$SLURM_CPUS_PER_TASK
 MEMORY=$SLURM_MEM_PER_NODE
-OUTDIR=results/Assemblies/Trinity
+OUTDIR=results/Assemblies
 reads_1="results/reads_QC/fastp/RNAseq/ERR754081_trimmed_1.fastq.gz"
 reads_2="results/reads_QC/fastp/RNAseq/ERR754081_trimmed_2.fastq.gz"
 
 mkdir -p "$OUTDIR"
 
 Trinity --seqType fq --left "$reads_1" --right "$reads_2" \
- --CPU "$THREADS" --max_memory "$MEMORY" --output "$OUTDIR"
+ --CPU "$THREADS" --max_memory "$MEMORY" 
+
+ mv trinity_out_dir "${OUTDIR}/."
