@@ -6,8 +6,8 @@
 #SBATCH --job-name=fastp_pacbio
 #SBATCH --mail-user=moise.meka@students.unibe.ch
 #SBATCH --mail-type=start,end,fail
-#SBATCH --output=/data/users/mmeka/assembly_annotation_course/.log/output/fastqc_%j.o
-#SBATCH --error=/data/users/mmeka/assembly_annotation_course/.log/error/fastqc_%j.e
+#SBATCH --output=/data/users/mmeka/assembly_annotation_course/.log/output/fastp_%j.o
+#SBATCH --error=/data/users/mmeka/assembly_annotation_course/.log/error/fastp_%j.e
 #SBATCH --partition=pibu_el8
 
 THREADS=$SLURM_CPUS_PER_TASK
