@@ -19,5 +19,5 @@ CONTAINER=/containers/apptainer/merqury_1.3.sif
 
 cd "$OUTDIR"
 
-apptainer exec --bind $WORKDIR "$CONTAINER" \
+apptainer exec --bind $WORKDIR --env MERQURY=/usr/local/share/merqury "$CONTAINER" \
     merqury.sh reads.meryl "$ASM" "$NAME"
