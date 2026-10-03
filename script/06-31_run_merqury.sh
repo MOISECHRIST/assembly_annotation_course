@@ -14,10 +14,12 @@
 ASM=$(realpath "$1")
 NAME=$2
 WORKDIR=/data/users/mmeka/assembly_annotation_course
-OUTDIR=$WORKDIR/results/Assemblies_QC/merqury
+OUTDIR=$WORKDIR/results/Assemblies_QC/merqury/$NAME
 CONTAINER=/containers/apptainer/merqury_1.3.sif
 
+mkdir -p "$OUTDIR"
 cd "$OUTDIR"
+[ -d reads.meryl ] || cp -r ../reads.meryl .
 
 apptainer exec --bind $WORKDIR --env MERQURY=/usr/local/share/merqury "$CONTAINER" \
     merqury.sh reads.meryl "$ASM" "$NAME"
