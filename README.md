@@ -67,9 +67,6 @@ assembly_annotation_course/
 
 | Parameter | Value |
 |---|---|
-| Accession | ERR754081 |
-| fastp version | 0.23.2 |
-| Sequencing | Paired-end (101 + 101 cycles) |
 | Duplication rate | 6.61% |
 | Insert size peak | 125 bp |
 | Detected adapter, read 1 | AGATCGGAAGAGCACACGTCTGAACTCCAGTCA |
