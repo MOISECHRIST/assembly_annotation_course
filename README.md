@@ -59,7 +59,7 @@ assembly_annotation_course/
 
 | RNA-seq (Illumina) | PacBio HiFi |
 |:---:|:---:|
-| <img src="images/RNASeq_fastqc_per_base_sequence_quality_plot.png" width="450"> | <img src="images/PacBio_Fastqc_Per_base_Seq_Quality.png" width="450"> |
+| <img src="images/RNASeq_fastqc_per_base_sequence_quality_plot.png" width="750"> | <img src="images/PacBio_Fastqc_Per_base_Seq_Quality.png" width="750"> |
 
 ### 2. Trimming and cleaning (fastp)
 
@@ -128,17 +128,7 @@ C = complete, S = single-copy, D = duplicated, F = fragmented, M = missing.
 | Nov-02 | hifiasm | 12,511 | 159,269,453 | 54.27 | 3.74E-03 | 267,328 | 95.57 |
 | Nov-02 | LJA | 11,829 | 144,087,267 | 54.08 | 3.91E-03 | 255,788 | 98.96 |
 
-### 7. Genome Comparison 
-
-| Flye vs Reference | Flye vs LJA | Flye vs HiFiASM |
-|:---:|:---:|:---:|
-| <img src="images/flye_vs_ref.png" width="450"> | <img src="images/flye_vs_LJA.png" width="450"> | <img src="images/flye_vs_hifiasm.png" width="450"> |
-
-| LJA vs Reference | HiFiASM vs Reference | HiFiASM vs LJA |
-|:---:|:---:|:---:|
-| <img src="images/LJA_vs_ref.png" width="450"> | <img src="images/hifiasm_vs_ref.png" width="450"> | <img src="images/hifiasm_vs_LJA.png" width="450"> |
-
-## Final choice
+#### Final choice
 
 **Best assembler for Nov-02: Flye**
 
@@ -154,6 +144,33 @@ C = complete, S = single-copy, D = duplicated, F = fragmented, M = missing.
 | N50 / NG50 / L90 / N90 | 5.3 Mb / 4.9 Mb / 29 / 747 kb | 6.8 Mb / 10.5 Mb / 163 / 45 kb | 9.7 Mb / 10.7 Mb / 21 / 1.46 Mb | LJA |
 | k-mer completeness | 98.89% | 95.57% | 98.96% | LJA (+0.07%) |
 
+**Assembly size vs. expected genome size (119–135 Mb) [[2, 3]](#references):**
+- **Flye** (137.6 Mb) and **LJA** (144.1 Mb) are close to the expected range.
+- **hifiasm** (159.3 Mb) is well above it, which agrees with its high duplication ratio (1.286) and suggests redundant (haplotypic) sequence.
+
+### 7. Genome Comparison 
+
+**Assembly vs. reference**
+
+| Flye vs Reference | LJA vs Reference | HiFiASM vs Reference |
+|:---:|:---:|:---:|
+| <img src="images/flye_vs_ref.png" width="450"> | <img src="images/LJA_vs_ref.png" width="450"> | <img src="images/hifiasm_vs_ref.png" width="450"> |
+
+**Assembly vs. assembly**
+
+| Flye vs LJA | Flye vs HiFiASM | HiFiASM vs LJA |
+|:---:|:---:|:---:|
+| <img src="images/flye_vs_LJA.png" width="450"> | <img src="images/flye_vs_hifiasm.png" width="450"> | <img src="images/hifiasm_vs_LJA.png" width="450"> |
+
+In the dotplots, purple segments are forward-strand alignments and cyan segments are reverse-strand alignments (inversions).
+
+- All three assemblies are collinear with the *A. thaliana* reference, with no large inversions or inter-chromosomal translocations.
+- The pairwise comparisons show that Flye, hifiasm and LJA agree on the large-scale structure. Differences are limited to small contigs and a few inversions.
+- None of the assemblies is telomere-to-telomere: each chromosome is split into several contigs.
+- The dotplots show no structural misassembly, so the choice of Flye rests on the BUSCO, QUAST and Merqury results.
+
 ## References
 
 1. Lian, Q. et al. (2024). A pan-genome of 69 *Arabidopsis thaliana* accessions reveals a conserved genome structure throughout the global species range. *Nature Genetics*, 56, 982–991.
+2. *Arabidopsis thaliana* genome size. PubMed Central article PMC9510872: https://pmc.ncbi.nlm.nih.gov/articles/PMC9510872/
+3. *Arabidopsis thaliana* genome assembly TAIR10.1 (GCF_000001735.4), NCBI Datasets: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000001735.4/
