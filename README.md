@@ -84,13 +84,6 @@ assembly_annotation_course/
 | Q30 bases | 3.59 Gbp (78.55%) | 3.46 Gbp (85.30%) |
 | GC content | 46.33% | 45.94% |
 
-| Filtering result | Reads | % of input |
-|---|---|---|
-| Passed filters | 43.38 M | 95.88% |
-| Low quality | 21.6 K | 0.05% |
-| Too many N | 290 | 0.00% |
-| Too short | 1.84 M | 4.07% |
-
 ### 3. K-mer profile
 
 - **PacBio HiFi (ERR11437321)**
